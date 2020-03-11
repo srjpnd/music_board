@@ -15,14 +15,32 @@ class homepage extends StatefulWidget {
 
 class _homepageState extends State<homepage> {
   
-  Expanded playme(int integers){
+   playme(int integers){
     
     final player = AssetsAudioPlayer();
     player.open("assets/note$integers.wav",);
     
   }
 
-
+  Expanded notekey( {Color color,int integers}){
+   return Expanded(
+       child:Container(
+         decoration:BoxDecoration(
+           border: Border.all(color: Colors.purple),
+           boxShadow: [BoxShadow(blurRadius: 20.0,
+           offset: Offset(0, 10)
+           
+             
+           )]
+         ),
+         margin: EdgeInsets.all(10.0),
+         child: FlatButton(
+        onPressed: (){
+            playme(integers);},
+            color: color,
+    ),),
+   );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,29 +48,17 @@ class _homepageState extends State<homepage> {
       body: SafeArea(child:
       Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        
         children: <Widget>[
+          notekey(color: Colors.blueGrey[900],integers: 1),
+          notekey(color: Colors.red,integers: 2),
+          notekey(color: Colors.teal,integers: 3),
+          notekey(color: Colors.brown,integers: 4),
+          notekey(color: Colors.purple,integers: 5),
+          notekey(color: Colors.pink,integers: 6),
+          notekey(color: Colors.orange[900],integers: 7),
+          
 
-        Expanded(
-                  child: FlatButton(onPressed: (){
-            playme(1)
-            ;},color: Colors.blueAccent,
-            ),
-        ),
-        FlatButton(onPressed: (){
-          playme(2);},
-          color:Colors.red ,),
-        FlatButton(onPressed: (){
-          playme(3);},color:Colors.brown,),
-        FlatButton(onPressed: (){
-          playme(4);},color:Colors.green ,),
-        FlatButton(onPressed: (){
-          playme(5); },color: Colors.purple,),
-        FlatButton(onPressed: (){
-          playme(6);},color:Colors.pink,),
-        FlatButton(onPressed: (){
-          playme(7);},color:Colors.black),
-        
-        
       ],),),
       
     );
